@@ -61,9 +61,9 @@ uvicorn main:app --reload --port 7860   # API at http://localhost:7860/docs
 
 ```bash
 cd frontend
-npm install
+pnpm install
 cp .env.example .env          # VITE_BACKEND_URL=http://localhost:7860
-npm run dev                   # http://localhost:3000
+pnpm dev                      # http://localhost:3000
 ```
 
 ## How it works

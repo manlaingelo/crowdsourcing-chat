@@ -28,9 +28,9 @@ setup-backend:
     {{pip}} install -q -r {{backend_dir}}/requirements.txt
     @echo "✅ Backend deps installed."
 
-# Install frontend npm packages
+# Install frontend packages (pnpm)
 setup-frontend:
-    cd {{frontend_dir}} && npm install
+    cd {{frontend_dir}} && pnpm install
     @echo "✅ Frontend deps installed."
 
 # Create .env files from examples if they don't exist yet
@@ -57,7 +57,7 @@ backend:
 
 # Start the TanStack Start frontend (http://localhost:3000)
 frontend:
-    cd {{frontend_dir}} && npm run dev
+    cd {{frontend_dir}} && pnpm dev
 
 # ---- run (one shot) ----
 
@@ -68,7 +68,7 @@ start:
     echo "Starting backend (:7860) and frontend (:3000)…"
     ( cd {{backend_dir}} && .venv/bin/uvicorn main:app --reload --port 7860 ) &
     BACKEND_PID=$!
-    ( cd {{frontend_dir}} && npm run dev ) &
+    ( cd {{frontend_dir}} && pnpm dev ) &
     FRONTEND_PID=$!
     trap 'echo; echo "Stopping…"; kill $BACKEND_PID $FRONTEND_PID 2>/dev/null' INT TERM EXIT
     wait
@@ -77,11 +77,11 @@ start:
 
 # Build the frontend for production
 build:
-    cd {{frontend_dir}} && npm run build
+    cd {{frontend_dir}} && pnpm build
 
 # Typecheck the frontend
 typecheck:
-    cd {{frontend_dir}} && npx tsc --noEmit
+    cd {{frontend_dir}} && pnpm exec tsc --noEmit
 
 # Remove build artifacts and virtualenv
 clean:
