@@ -45,10 +45,10 @@ def check_pinecone() -> str:
     return f"indexes={names}"
 
 
-def check_brave() -> str:
-    from services import brave_service
+def check_tavily() -> str:
+    from services import tavily_service
 
-    results = brave_service.search("cordless drill", count=1)
+    results = tavily_service.search("cordless drill", count=1)
     return f"{len(results)} result(s)"
 
 
@@ -67,7 +67,7 @@ def main() -> None:
     results = [
         _check("Google AI Studio (Gemini)", check_gemini),
         _check("Pinecone", check_pinecone),
-        _check("Brave Search", check_brave),
+        _check("Tavily Search", check_tavily),
         _check("GitHub", check_github),
     ]
     print()

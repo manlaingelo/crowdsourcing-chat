@@ -16,7 +16,7 @@ from the original `PRODUCT.md` spec, with the reasoning behind them.
 └──┬───────────┬───────────┬──┘
    │           │           │
    ▼           ▼           ▼
-Pinecone   Gemini 2.5   Brave Search
+Pinecone   Gemini 2.5   Tavily Search
 (vectors)  Flash +      (web fallback)
            embeddings
                           │ low-confidence path
@@ -38,7 +38,7 @@ Pinecone query (cosine, top_k)
   ▼
 top score >= CONFIDENCE_THRESHOLD ?
   ├─ yes → WORKFLOW 1: Gemini answers from catalog metadata
-  └─ no  → WORKFLOW 2: Brave search → Gemini answers from web
+  └─ no  → WORKFLOW 2: Tavily search → Gemini answers from web
                        → extract product attrs → flag needs_contribution
                        → user submits → /contribute → GitHub PR
 ```
@@ -85,6 +85,6 @@ and `pinecone_service` rehydrates it on read.
 - **Gemini:** 15 RPM / 1500 RPD. `utils/rate_limiter.with_retry` backs off on 429s.
   Image queries cost 2 Gemini calls (OCR + answer); text catalog hits cost 1.
 - **Pinecone:** serverless free index, cosine metric, 3072-dim.
-- **Brave:** 1 RPS / 10k mo — one call per fallback only.
+- **Tavily:** 1,000 searches/mo — one call per fallback only.
 - **HF Spaces:** app binds `:7860`; Pinecone is the source of truth, so no local disk
   persistence is assumed.

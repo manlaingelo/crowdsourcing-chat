@@ -8,7 +8,7 @@
                               WORKFLOW 1   │                   │  WORKFLOW 2
                         (vector retrieval) │                   │ (web fallback +
                                            ▼                   ▼  crowdsourcing)
-                              Gemini answer from        Brave search ─► Gemini
+                              Gemini answer from        Tavily search ─► Gemini
                               catalog metadata          answer + extract product
                                                         ─► flag for contribution
 """
@@ -17,7 +17,7 @@ import json
 
 from config import settings
 from models import ProductMetadata, SearchResponse
-from services import brave_service, embeddings_service, gemini_service, pinecone_service
+from services import embeddings_service, gemini_service, pinecone_service, tavily_service
 
 
 def _catalog_context(results) -> str:
@@ -69,8 +69,8 @@ def run_search(query: str | None, image_bytes: bytes | None, mime_type: str | No
             needs_contribution=settings.enable_data_contribution,
         )
 
-    web_results = brave_service.search(query_text)
-    web_context = brave_service.results_to_context(web_results)
+    web_results = tavily_service.search(query_text)
+    web_context = tavily_service.results_to_context(web_results)
     answer = gemini_service.synthesize_answer(query_text, web_context, source="web")
 
     suggested = None

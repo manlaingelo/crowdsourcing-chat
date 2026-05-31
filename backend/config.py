@@ -26,8 +26,8 @@ class Settings(BaseSettings):
     pinecone_cloud: str = "aws"
     pinecone_region: str = "us-east-1"
 
-    # --- Brave Search ---
-    brave_api_key: str = ""
+    # --- Tavily Search ---
+    tavily_api_key: str = ""
 
     # --- GitHub data ledger ---
     github_token: str = ""

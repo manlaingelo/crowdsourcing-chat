@@ -17,13 +17,13 @@ the missing record back to the data ledger via an automatic GitHub Pull Request.
 | Vector DB | **Pinecone** (serverless) | Product vector storage & similarity search |
 | LLM + OCR | **Gemini 2.5 Flash** | Image OCR + conversational answers |
 | Embeddings | **gemini-embedding-001** | Text embeddings (3072-dim) |
-| Web fallback | **Brave Search API** | Real-world data when the catalog misses |
+| Web fallback | **Tavily API** | Real-world data when the catalog misses |
 | Data ledger | **GitHub repo** + PyGithub | `data/products/*.json`, auto-PR contributions |
 
 ## Repository layout
 
 ```
-backend/    FastAPI orchestrator + service clients (Gemini, Pinecone, Brave, GitHub)
+backend/    FastAPI orchestrator + service clients (Gemini, Pinecone, Tavily, GitHub)
 frontend/   TanStack Start app (chat UI)
 data/       Product JSON catalog + JSON Schema
 scripts/    ingest_products.py · verify_setup.py
@@ -32,7 +32,7 @@ scripts/    ingest_products.py · verify_setup.py
 ## Prerequisites
 
 API keys (all free tier): [Google AI Studio](https://aistudio.google.com/apikey),
-[Pinecone](https://www.pinecone.io/), [Brave Search](https://api-dashboard.search.brave.com/),
+[Pinecone](https://www.pinecone.io/), [Tavily](https://app.tavily.com/),
 and a GitHub Personal Access Token with `repo` scope for the data-ledger repo.
 
 ## Quick start (local)
@@ -76,7 +76,7 @@ pnpm dev                      # http://localhost:3000
    matched catalog metadata. Source badge: **Local catalog**.
 
 ### Workflow 2 — Web fallback & crowdsourcing
-1. On low confidence / no match, the backend queries Brave Search.
+1. On low confidence / no match, the backend queries Tavily.
 2. Gemini answers from the web results (badge: **Web**) and extracts a draft product record.
 3. The UI shows an **"Improve Our Data"** form pre-filled with the extracted attributes.
 4. On submit, the backend opens a GitHub PR adding `data/products/<slug>.json`.
@@ -91,7 +91,7 @@ pnpm dev                      # http://localhost:3000
 ## Free-tier limits to keep in mind
 
 - Gemini: 15 requests/min, 1,500/day (image queries use 2 calls; text catalog hits use 1).
-- Pinecone serverless free index; Brave: 1 req/sec, 10k/month.
+- Pinecone serverless free index; Tavily: 1,000 searches/month.
 
 ## Contributing
 

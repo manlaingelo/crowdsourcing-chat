@@ -1,14 +1,14 @@
-"""Brave Search API client — the web-intel fallback.
+"""Tavily Search API client — the web-intel fallback.
 
-Free tier: 1 request/second, 10,000 queries/month. We make a single call per
-fallback and return clean text snippets for Gemini to summarize.
+Free tier: 1,000 search queries/month. We make a single call per fallback and
+return clean text snippets for Gemini to summarize.
 """
 
 import httpx
 
 from config import settings
 
-_ENDPOINT = "https://api.search.brave.com/res/v1/web/search"
+_ENDPOINT = "https://api.tavily.com/search"
 
 
 def search(query: str, count: int = 5) -> list[dict]:
@@ -17,28 +17,32 @@ def search(query: str, count: int = 5) -> list[dict]:
     Returns an empty list on auth/network errors so the caller can degrade
     gracefully rather than 500.
     """
-    if not settings.brave_api_key:
+    if not settings.tavily_api_key:
         return []
 
     headers = {
-        "Accept": "application/json",
-        "X-Subscription-Token": settings.brave_api_key,
+        "Authorization": f"Bearer {settings.tavily_api_key}",
+        "Content-Type": "application/json",
     }
-    params = {"q": query, "count": count}
+    payload = {
+        "query": query,
+        "max_results": count,
+        "search_depth": "basic",
+    }
 
     try:
-        resp = httpx.get(_ENDPOINT, headers=headers, params=params, timeout=15.0)
+        resp = httpx.post(_ENDPOINT, headers=headers, json=payload, timeout=15.0)
         resp.raise_for_status()
         data = resp.json()
     except (httpx.HTTPError, ValueError):
         return []
 
     results = []
-    for item in (data.get("web", {}) or {}).get("results", []):
+    for item in data.get("results", []) or []:
         results.append(
             {
                 "title": item.get("title", ""),
-                "description": item.get("description", ""),
+                "description": item.get("content", ""),
                 "url": item.get("url", ""),
             }
         )
