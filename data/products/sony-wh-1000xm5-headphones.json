@@ -1,0 +1,16 @@
+{
+  "product_id": "PROD-004",
+  "name": "Sony WH-1000XM5 Wireless Noise-Cancelling Headphones",
+  "description": "Premium over-ear headphones with industry-leading adaptive noise cancellation, 30-hour battery life, and multipoint Bluetooth. Eight microphones and two processors deliver clear hands-free calls.",
+  "category": "electronics",
+  "price": 399.0,
+  "attributes": {
+    "brand": "Sony",
+    "model": "WH-1000XM5",
+    "serial": "SNY5XM-884201",
+    "color": "Midnight Black",
+    "battery": "30 hours",
+    "condition": "new"
+  },
+  "sources": [{ "type": "manual", "date": "2026-05-31" }]
+}

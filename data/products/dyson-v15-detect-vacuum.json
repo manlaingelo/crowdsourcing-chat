@@ -1,0 +1,16 @@
+{
+  "product_id": "PROD-007",
+  "name": "Dyson V15 Detect Cordless Vacuum",
+  "description": "Cordless stick vacuum with a laser dust-detection head and an LCD screen that reports particle counts in real time. Up to 60 minutes of run time and a HEPA filtration system that captures 99.99% of particles.",
+  "category": "appliances",
+  "price": 749.0,
+  "attributes": {
+    "brand": "Dyson",
+    "model": "V15 Detect",
+    "serial": "DYV15-447721",
+    "color": "Yellow/Nickel",
+    "battery": "60 minutes",
+    "condition": "new"
+  },
+  "sources": [{ "type": "manual", "date": "2026-05-31" }]
+}

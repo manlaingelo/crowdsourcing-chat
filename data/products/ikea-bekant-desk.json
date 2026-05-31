@@ -1,0 +1,17 @@
+{
+  "product_id": "PROD-006",
+  "name": "IKEA BEKANT Sit/Stand Desk 160x80 cm",
+  "description": "Electric sit/stand desk with a memory control panel and a 22-90 second height range. Melamine surface resists scratches and stains. 10-year limited warranty.",
+  "category": "furniture",
+  "price": 599.0,
+  "attributes": {
+    "brand": "IKEA",
+    "model": "BEKANT",
+    "serial": "IK-BK-160080W",
+    "color": "White",
+    "material": "Melamine / powder-coated steel",
+    "dimensions": "160cm W x 80cm D",
+    "condition": "new"
+  },
+  "sources": [{ "type": "manual", "date": "2026-05-31" }]
+}

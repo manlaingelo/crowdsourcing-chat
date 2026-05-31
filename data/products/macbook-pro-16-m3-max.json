@@ -1,0 +1,19 @@
+{
+  "product_id": "PROD-001",
+  "name": "MacBook Pro 16-inch M3 Max",
+  "description": "High-performance laptop with the Apple M3 Max chip, 16-core CPU, 40-core GPU, 48GB unified memory, and 1TB SSD. Liquid Retina XDR display. Built for video editing, 3D rendering, and software development.",
+  "category": "electronics",
+  "price": 3999.0,
+  "attributes": {
+    "brand": "Apple",
+    "model": "MacBook Pro 16 (2024)",
+    "serial": "C02ZX1AMMD6T",
+    "color": "Space Black",
+    "material": "Aluminum",
+    "processor": "Apple M3 Max",
+    "ram": "48GB",
+    "storage": "1TB SSD",
+    "condition": "new"
+  },
+  "sources": [{ "type": "manual", "date": "2026-05-31" }]
+}

@@ -1,0 +1,57 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Product",
+  "type": "object",
+  "required": ["product_id", "name", "description", "category"],
+  "properties": {
+    "product_id": {
+      "type": "string",
+      "description": "Unique product identifier (used as the Pinecone vector id)."
+    },
+    "name": {
+      "type": "string",
+      "description": "Product name or model number."
+    },
+    "description": {
+      "type": "string",
+      "description": "Detailed product description used for embedding and answers."
+    },
+    "category": {
+      "type": "string",
+      "enum": ["electronics", "tools", "furniture", "appliances", "other"]
+    },
+    "price": {
+      "type": ["number", "null"],
+      "description": "Price in USD."
+    },
+    "attributes": {
+      "type": "object",
+      "description": "Searchable key/value attributes.",
+      "properties": {
+        "brand": { "type": "string" },
+        "model": { "type": "string" },
+        "serial": { "type": "string" },
+        "color": { "type": "string" },
+        "material": { "type": "string" },
+        "dimensions": { "type": "string" },
+        "weight": { "type": "string" },
+        "condition": {
+          "type": "string",
+          "enum": ["new", "like-new", "used", "refurbished"]
+        }
+      },
+      "additionalProperties": true
+    },
+    "sources": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "type": { "type": "string", "enum": ["web", "manual", "contributed"] },
+          "url": { "type": "string" },
+          "date": { "type": "string" }
+        }
+      }
+    }
+  }
+}

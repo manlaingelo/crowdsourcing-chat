@@ -1,0 +1,29 @@
+# --- Secrets ---
+.env
+.env.*
+!.env.example
+*/.env
+*/.env.*
+!*/.env.example
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+*.egg-info/
+
+# --- Node / frontend ---
+node_modules/
+dist/
+.output/
+.nitro/
+.tanstack/
+*.local
+
+# --- Editor / OS ---
+.DS_Store
+.vscode/*
+!.vscode/settings.json
+.idea/

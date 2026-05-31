@@ -1,0 +1,17 @@
+{
+  "product_id": "PROD-003",
+  "name": "Herman Miller Aeron Ergonomic Chair (Size B)",
+  "description": "Iconic ergonomic office chair with 8Z Pellicle suspension mesh, PostureFit SL lumbar support, and fully adjustable arms. Size B (medium) fits most users. Backed by a 12-year warranty.",
+  "category": "furniture",
+  "price": 1395.0,
+  "attributes": {
+    "brand": "Herman Miller",
+    "model": "Aeron Size B",
+    "serial": "AER1B23GRAPH",
+    "color": "Graphite",
+    "material": "Pellicle mesh / die-cast aluminum",
+    "dimensions": "27in W x 27in D x 41in H",
+    "condition": "new"
+  },
+  "sources": [{ "type": "manual", "date": "2026-05-31" }]
+}

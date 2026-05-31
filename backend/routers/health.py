@@ -1,0 +1,10 @@
+"""Liveness probe used by HF Spaces and the frontend."""
+
+from fastapi import APIRouter
+
+router = APIRouter(tags=["health"])
+
+
+@router.get("/health")
+def health() -> dict:
+    return {"status": "ok"}

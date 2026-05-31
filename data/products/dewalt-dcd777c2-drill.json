@@ -1,0 +1,17 @@
+{
+  "product_id": "PROD-002",
+  "name": "DeWalt DCD777C2 Compact Drill Driver Kit",
+  "description": "Compact 20V MAX brushless cordless drill/driver kit. Includes two 1.3Ah lithium-ion batteries, a charger, and a contractor bag. Lightweight at 2.6 lbs with a high-speed transmission delivering up to 1,750 RPM.",
+  "category": "tools",
+  "price": 159.0,
+  "attributes": {
+    "brand": "DeWalt",
+    "model": "DCD777C2",
+    "serial": "DW20V-771234",
+    "color": "Yellow/Black",
+    "voltage": "20V MAX",
+    "weight": "2.6 lbs",
+    "condition": "new"
+  },
+  "sources": [{ "type": "manual", "date": "2026-05-31" }]
+}

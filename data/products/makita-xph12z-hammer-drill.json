@@ -1,0 +1,16 @@
+{
+  "product_id": "PROD-005",
+  "name": "Makita XPH12Z 18V LXT Brushless Hammer Driver-Drill",
+  "description": "18V LXT lithium-ion brushless cordless 1/2-inch hammer driver-drill (tool only). Delivers 530 in.lbs of max torque with a 2-speed transmission and a built-in LED light. Compatible with all Makita 18V LXT batteries.",
+  "category": "tools",
+  "price": 139.0,
+  "attributes": {
+    "brand": "Makita",
+    "model": "XPH12Z",
+    "serial": "MKT18-512098",
+    "color": "Teal/Black",
+    "voltage": "18V LXT",
+    "condition": "new"
+  },
+  "sources": [{ "type": "manual", "date": "2026-05-31" }]
+}

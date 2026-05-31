@@ -1,0 +1,16 @@
+{
+  "product_id": "PROD-008",
+  "name": "Logitech MX Master 3S Wireless Mouse",
+  "description": "Advanced wireless performance mouse with an 8,000 DPI sensor, quiet clicks, and an electromagnetic MagSpeed scroll wheel. Connects via Bluetooth or the Logi Bolt receiver and works on glass. USB-C quick charging.",
+  "category": "electronics",
+  "price": 99.99,
+  "attributes": {
+    "brand": "Logitech",
+    "model": "MX Master 3S",
+    "serial": "LG3S-209914",
+    "color": "Graphite",
+    "dpi": "8000",
+    "condition": "new"
+  },
+  "sources": [{ "type": "manual", "date": "2026-05-31" }]
+}
