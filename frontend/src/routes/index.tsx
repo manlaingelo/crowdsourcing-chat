@@ -3,6 +3,7 @@ import { useState } from 'react'
 import { Boxes } from 'lucide-react'
 import { SearchPanel } from '#/components/SearchPanel'
 import { ChatWindow } from '#/components/ChatWindow'
+import { ThemeToggle } from '#/components/ThemeToggle'
 import { searchProducts } from '#/lib/api'
 import type { ChatTurn } from '#/types'
 
@@ -35,21 +36,24 @@ function Home() {
   }
 
   return (
-    <div className="mx-auto flex h-screen max-w-3xl flex-col px-4">
-      <header className="flex items-center gap-3 py-5">
-        <div className="rounded-xl bg-indigo-600 p-2 text-white">
+    <div className="mx-auto flex h-screen max-w-3xl flex-col px-4 sm:px-6">
+      <header className="flex items-center gap-3 border-b border-border py-4">
+        <div className="grid size-10 shrink-0 place-items-center rounded-xl bg-accent text-accent-fg shadow-sm">
           <Boxes size={22} />
         </div>
-        <div>
-          <h1 className="text-lg font-bold text-slate-800">Crowd-RAG Product Search</h1>
-          <p className="text-xs text-slate-500">
-            Vector retrieval with web fallback &amp; community data contributions
+        <div className="min-w-0 flex-1">
+          <h1 className="truncate text-base font-semibold tracking-tight text-ink">
+            Crowd-RAG Product Search
+          </h1>
+          <p className="truncate text-xs text-muted">
+            Vector retrieval with web fallback &amp; community contributions
           </p>
         </div>
+        <ThemeToggle />
       </header>
 
-      <main className="flex flex-1 flex-col overflow-hidden">
-        <ChatWindow turns={turns} />
+      <main className="flex flex-1 flex-col overflow-hidden" role="main">
+        <ChatWindow turns={turns} onPrompt={(q) => handleSearch(q, null)} />
       </main>
 
       <footer className="py-4">

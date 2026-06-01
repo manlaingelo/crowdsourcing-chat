@@ -46,15 +46,15 @@ export function ImproveDataForm({ suggested }: Props) {
 
   if (prUrl) {
     return (
-      <div className="mt-3 flex items-center gap-2 rounded-xl border border-emerald-200 bg-emerald-50 p-3 text-sm text-emerald-700">
-        <CheckCircle2 size={18} />
+      <div className="mt-3 flex items-center gap-2 rounded-xl border border-success-fg/25 bg-success-soft p-3 text-sm text-success-fg">
+        <CheckCircle2 size={18} className="shrink-0" />
         <span>
           Thanks! A pull request was opened.{' '}
           <a
             href={prUrl}
             target="_blank"
             rel="noreferrer"
-            className="font-semibold underline"
+            className="font-semibold underline underline-offset-2"
           >
             View PR
           </a>
@@ -66,10 +66,11 @@ export function ImproveDataForm({ suggested }: Props) {
   if (!open) {
     return (
       <button
+        type="button"
         onClick={() => setOpen(true)}
-        className="mt-3 flex items-center gap-2 rounded-xl border border-amber-300 bg-amber-50 px-3 py-2 text-sm font-medium text-amber-700 transition hover:bg-amber-100"
+        className="mt-3 flex items-center gap-2 rounded-xl border border-warn-border bg-warn-soft px-3 py-2 text-sm font-medium text-warn-fg transition-[filter] duration-150 hover:brightness-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring dark:hover:brightness-110"
       >
-        <GitPullRequest size={16} />
+        <GitPullRequest size={16} className="shrink-0" />
         This product is missing from our catalog — help us add it
       </button>
     )
@@ -78,9 +79,9 @@ export function ImproveDataForm({ suggested }: Props) {
   return (
     <form
       onSubmit={submit}
-      className="mt-3 space-y-3 rounded-xl border border-amber-200 bg-amber-50/60 p-4"
+      className="mt-3 space-y-3 rounded-xl border border-warn-border bg-warn-soft p-4"
     >
-      <p className="text-sm font-semibold text-amber-800">Improve Our Data</p>
+      <p className="text-sm font-semibold text-warn-fg">Improve our data</p>
 
       <Field label="Name">
         <input
@@ -124,25 +125,25 @@ export function ImproveDataForm({ suggested }: Props) {
         </Field>
       </div>
 
-      {error && <p className="text-sm text-red-600">{error}</p>}
+      {error && <p className="text-sm text-danger-fg">{error}</p>}
 
       <div className="flex gap-2">
         <button
           type="submit"
           disabled={status === 'sending'}
-          className="flex items-center gap-1.5 rounded-lg bg-amber-600 px-4 py-2 text-sm font-medium text-white hover:bg-amber-700 disabled:opacity-50"
+          className="flex items-center gap-1.5 rounded-lg bg-warn-accent px-4 py-2 text-sm font-medium text-white shadow-sm transition-[background-color,transform] duration-150 hover:bg-warn-accent-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring active:scale-95 disabled:opacity-50 disabled:active:scale-100"
         >
           {status === 'sending' ? (
             <Loader2 size={16} className="animate-spin" />
           ) : (
             <GitPullRequest size={16} />
           )}
-          Open Pull Request
+          Open pull request
         </button>
         <button
           type="button"
           onClick={() => setOpen(false)}
-          className="rounded-lg px-3 py-2 text-sm text-slate-500 hover:bg-slate-100"
+          className="rounded-lg px-3 py-2 text-sm text-warn-fg transition-[filter] duration-150 hover:brightness-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring dark:hover:brightness-110"
         >
           Cancel
         </button>
@@ -154,7 +155,7 @@ export function ImproveDataForm({ suggested }: Props) {
 function Field({ label, children }: { label: string; children: React.ReactNode }) {
   return (
     <label className="block">
-      <span className="mb-1 block text-xs font-medium text-slate-600">
+      <span className="mb-1 block text-xs font-medium text-warn-fg">
         {label}
       </span>
       {children}

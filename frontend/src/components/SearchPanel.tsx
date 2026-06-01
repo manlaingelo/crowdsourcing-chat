@@ -31,25 +31,27 @@ export function SearchPanel({ disabled, onSearch }: Props) {
     clearImage()
   }
 
+  const canSubmit = !disabled && (query.trim().length > 0 || image !== null)
+
   return (
     <form
       onSubmit={submit}
-      className="rounded-2xl border border-slate-200 bg-white p-3 shadow-sm"
+      className="rounded-2xl border border-border bg-surface p-2.5 shadow-sm transition-colors focus-within:border-border-strong"
     >
       {preview && (
-        <div className="mb-3 flex items-center gap-3 rounded-xl bg-slate-50 p-2">
+        <div className="mb-2.5 flex items-center gap-3 rounded-xl bg-surface-2 p-2">
           <img
             src={preview}
-            alt="upload preview"
-            className="h-16 w-16 rounded-lg object-cover"
+            alt="Upload preview"
+            className="size-14 rounded-lg object-cover"
           />
-          <span className="flex-1 truncate text-sm text-slate-600">
+          <span className="flex-1 truncate text-sm text-muted">
             {image?.name}
           </span>
           <button
             type="button"
             onClick={clearImage}
-            className="rounded-full p-1 text-slate-400 hover:bg-slate-200 hover:text-slate-700"
+            className="grid size-8 place-items-center rounded-full text-faint transition-colors hover:bg-border hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
             aria-label="Remove image"
           >
             <X size={18} />
@@ -62,7 +64,7 @@ export function SearchPanel({ disabled, onSearch }: Props) {
           type="button"
           onClick={() => fileRef.current?.click()}
           disabled={disabled}
-          className="rounded-xl border border-slate-200 p-2.5 text-slate-500 transition hover:bg-slate-50 hover:text-slate-700 disabled:opacity-50"
+          className="grid size-11 shrink-0 place-items-center rounded-xl border border-border text-muted transition-[color,background-color,border-color] duration-150 hover:border-border-strong hover:bg-surface-2 hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring active:scale-95 disabled:pointer-events-none disabled:opacity-50"
           aria-label="Upload product image"
         >
           <ImagePlus size={20} />
@@ -75,24 +77,26 @@ export function SearchPanel({ disabled, onSearch }: Props) {
           onChange={(e) => pickImage(e.target.files?.[0] ?? null)}
         />
 
-        <textarea
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-          onKeyDown={(e) => {
-            if (e.key === 'Enter' && !e.shiftKey) submit(e)
-          }}
-          rows={1}
-          placeholder="Search by product name, serial number, or upload a photo…"
-          className="max-h-32 min-h-[44px] flex-1 resize-none rounded-xl border border-slate-200 px-3 py-2.5 text-sm outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-100"
-        />
+        <div className="relative flex-1">
+          <textarea
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' && !e.shiftKey) submit(e)
+            }}
+            rows={1}
+            placeholder="Search by product name, serial number, or upload a photo…"
+            className="max-h-32 min-h-11 w-full resize-none rounded-xl border border-border bg-surface px-3 py-2.5 text-sm text-ink outline-none transition-[border-color,box-shadow] duration-150 placeholder:text-faint focus-visible:border-accent focus-visible:ring-[3px] focus-visible:ring-ring"
+          />
+        </div>
 
         <button
           type="submit"
-          disabled={disabled || (!query.trim() && !image)}
-          className="flex items-center gap-1.5 rounded-xl bg-indigo-600 px-4 py-2.5 text-sm font-medium text-white transition hover:bg-indigo-700 disabled:cursor-not-allowed disabled:opacity-50"
+          disabled={!canSubmit}
+          className="flex h-11 shrink-0 items-center gap-1.5 rounded-xl bg-accent px-4 text-sm font-medium text-accent-fg shadow-sm transition-[background-color,transform,opacity] duration-150 hover:bg-accent-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring active:scale-95 disabled:cursor-not-allowed disabled:opacity-40 disabled:active:scale-100"
         >
           <Search size={18} />
-          Search
+          <span className="hidden sm:inline">Search</span>
         </button>
       </div>
     </form>

@@ -3,6 +3,7 @@ import { TanStackRouterDevtoolsPanel } from '@tanstack/react-router-devtools'
 import { TanStackDevtools } from '@tanstack/react-devtools'
 
 import appCss from '../styles.css?url'
+import { themeInitScript } from '#/lib/theme'
 
 export const Route = createRootRoute({
   head: () => ({
@@ -30,8 +31,12 @@ export const Route = createRootRoute({
 
 function RootDocument({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
+        <script
+          // Applies the saved/system theme before first paint (no FOUC).
+          dangerouslySetInnerHTML={{ __html: themeInitScript }}
+        />
         <HeadContent />
       </head>
       <body>
